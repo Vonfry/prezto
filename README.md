@@ -1,3 +1,9 @@
+NOET
+======
+
+This is a revision for myself(Vonfry), it merge offical master branch and
+my fix branch.
+
 Prezto — Instantly Awesome Zsh
 ==============================
 
