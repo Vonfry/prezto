@@ -8,6 +8,7 @@ fi
 git pull $offical_remote $offical_master
 git merge $offical_master
 for fix in $fix_branches; do
+  git pull origin $fix
   git merge $fix
 done
 git push origin $(git branch --show-current)
