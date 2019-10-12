@@ -1,14 +1,16 @@
 #!/usr/bin/env zsh
 offical_remote=offical
+vonfry_remote=vonfry
 offical_master=master
-fix_branches=(nixos-gpg-module-fix)
+merge_branches=($offical_master nixos-gpg-module-fix)
 if [[ ! $(git remote) =~ $offical_remote ]]; then
   git remote add $offical_remote https://github.com/sorin-ionescu/prezto.git
 fi
-git pull $offical_remote $offical_master
-git merge $offical_master
-for fix in $fix_branches; do
-  git fetch origin $fix
-  git merge origin/$fix
+if [[ ! $(git remote) =~ $vonfry_remote ]]; then
+  git remote add $vonfry_remote git@github.com:Vonfry/prezto.git
+fi
+for b in $merge_branches; do
+  git fetch origin $b
+  git merge origin/$b
 done
-git push origin $(git branch --show-current)
+git push $vonfry_remote $(git branch --show-current)
