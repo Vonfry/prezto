@@ -18,7 +18,7 @@ fi
 echo -e "\e[1;32mPull offical remote to local..\e[0m"
 for b in $merge_offical_branches; do
   if [[ ! $have_branches =~ $b ]]; then
-    git branch $b
+    git branch $b --track $offical_remote/$b
   fi
   git checkout $b
   git pull $offical_remote $b
@@ -27,7 +27,7 @@ done
 echo -e "\e[1;32mPull vonfry remote to local..\e[0m"
 for b in $merge_vonfry_branches; do
   if [[ ! $have_branches =~ $b ]]; then
-    git branch $b
+    git branch $b --track $vonfry_remote/$b
   fi
   git checkout $b
   git pull $vonfry_remote $b
@@ -35,7 +35,7 @@ for b in $merge_vonfry_branches; do
 done
 echo -e "\e[1;32mMerge fixes to current..\e[0m"
 git checkout $current_branch
-for b in ($merge_offical_branches $merge_vonfry_branches); do
+for b in $merge_offical_branches $merge_vonfry_branches; do
   git merge $b || exit -1
 done
 echo -e "\e[1;32mPush current branch..\e[0m"
