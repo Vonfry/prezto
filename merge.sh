@@ -11,10 +11,10 @@ if [[ ! $(git remote) =~ $vonfry_remote ]]; then
 fi
 for b in $merge_offical_branches; do
   git fetch $offical_remote $b
-  git merge $offical_remote/$b $b
+  git merge $offical_remote/$b
 done
 for b in $merge_vonfry_branches; do
   git fetch $vonfry_remote $b
-  git merge $vonfry_remote/$b $b
+  git merge $vonfry_remote/$b
 done
 git push $vonfry_remote $(git branch --show-current)
