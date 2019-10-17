@@ -10,7 +10,7 @@ if [[ ! $(git remote) =~ $vonfry_remote ]]; then
   git remote add $vonfry_remote git@github.com:Vonfry/prezto.git
 fi
 for b in $merge_branches; do
-  git fetch origin $b
-  git merge origin/$b
+  git fetch $offical_remote $b
+  git merge $offical_remote/$b
 done
 git push $vonfry_remote $(git branch --show-current)
