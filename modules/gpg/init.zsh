@@ -28,7 +28,7 @@ if [[ -z "$GPG_AGENT_INFO" && ! -S "${_gpg_agent_socket}" ]]; then
 fi
 
 # Inform gpg-agent of the current TTY for user prompts.
-export GPG_TTY="$(tty)"
+export GPG_TTY=$TTY
 
 # Integrate with the SSH module.
 if grep '^enable-ssh-support' "$_gpg_agent_conf" &> /dev/null; then
